@@ -24,15 +24,15 @@ const createLights = scene => {
   // const point1marker = sphere(pointMaterial, 0.1);
   // point1.add(point1marker);
 
-  const point2 = new PointLight(0xffffff, 2);
-  point2.position.set(-4, 6, -4);
-  scene.add(point2);
+  // const point2 = new PointLight(0xffffff, 2);
+  // point2.position.set(-4, 6, -4);
+  // scene.add(point2);
   // const point2marker = sphere(pointMaterial, 0.1);
   // point2.add(point2marker);
 
-  const point3 = new PointLight(0xffffff, 2);
-  point3.position.set(4, 6, 4);
-  scene.add(point3);
+  // const point3 = new PointLight(0xffffff, 2);
+  // point3.position.set(4, 6, 4);
+  // scene.add(point3);
   // const point3marker = sphere(pointMaterial, 0.1);
   // point3.add(point3marker);
 }

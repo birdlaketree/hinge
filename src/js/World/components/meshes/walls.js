@@ -2,7 +2,7 @@ import {Math, PlaneGeometry, MeshStandardMaterial, Mesh, DoubleSide, Vector2 } f
 import { dirtyConcrete } from '../materials/dirtyConcrete';
 
 const createWalls = (scene, size = 20, envmap = null) => {
-  const material = dirtyConcrete(0x3333ff, envmap);
+  const material = dirtyConcrete(0xffffff, envmap, 0.8);
   const geometry = new PlaneGeometry(size, size, 4, 4);
   geometry.attributes.uv2 = geometry.attributes.uv; // second uv is needed for aoMap
 
