@@ -6,7 +6,7 @@ const aoMapUrl         = new URL('/assets/copyrighted/textures/Concrete_Dirty_ue
 const normalMapUrl     = new URL('/assets/copyrighted/textures/Concrete_Dirty_ue4idgdlw_4K_surface_ms/ue4idgdlw_4K_Normal.jpg', import.meta.url);
 const roughnessMapUrl  = new URL('/assets/copyrighted/textures/Concrete_Dirty_ue4idgdlw_4K_surface_ms/ue4idgdlw_4K_Roughness.jpg', import.meta.url);
 
-const dirtyConcrete = (color, envmap, envMapIntensity = 1) => {
+const dirtyConcrete = (color = 0xfffffff, envmap, envMapIntensity = 1) => {
   const repeat = 4;
   const colorMap = textureHandler(colorMapUrl, repeat);
   const aoMap = textureHandler(aoMapUrl, repeat);
@@ -16,7 +16,7 @@ const dirtyConcrete = (color, envmap, envMapIntensity = 1) => {
   const parameters = {
     envMap: envmap.texture,
     envMapIntensity: envMapIntensity,
-    // color: 0x3333ff,
+    color: color,
     // side: DoubleSide,
     // roughness: 0.8,
     // metalness: 0,

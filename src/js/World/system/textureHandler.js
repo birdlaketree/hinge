@@ -3,7 +3,7 @@ import {
   RepeatWrapping
 } from 'three';
 
-const textureHandler = (textureUrl, repeat = 1) => {
+const textureHandler = (textureUrl, repeatX = 1, repeatY = 1) => {
   const loader = new TextureLoader();
   const texture = loader.load(
     textureUrl,
@@ -20,8 +20,8 @@ const textureHandler = (textureUrl, repeat = 1) => {
 
   texture.wrapS = RepeatWrapping;
   texture.wrapT = RepeatWrapping;
-  texture.repeat.x = repeat;
-  texture.repeat.y = repeat;
+  texture.repeat.x = repeatX;
+  texture.repeat.y = repeatY;
   return texture;
 }
 

@@ -19,10 +19,11 @@ const hingeComposition = (
   console.log('hingeComposition');
 
   // const hueShift = hue + Math.random() * 0.2 - 0.1;
+  // const hueShift = 0.2;
   const hueShift = 0.6;
   // const s1 = 0.96;
   // const l1 = 0.55 + Math.random() * 0.2 - 0.1;
-  const s1 = 0;
+  const s1 = 0.8;
   const l1 = Math.random() * 0.1 - 0.05;
   const s2 = 0.8;
   const l2 = 0.4 + Math.random() * 0.1;

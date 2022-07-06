@@ -1,4 +1,5 @@
-import { Color, Group } from "three";
+import { Color, Group, PlaneGeometry, Mesh } from "three";
+import { Math as TMath } from "three";
 import { createColor } from "./utils/createColor.js";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { Loop } from './system/Loop.js';
@@ -25,6 +26,7 @@ import { defaultColorWithNoise } from "./components/materials/defaultColorWithNo
 // import { steelWithSchratches } from "./components/materials/steelWithScratches.js";
 // import { superDotsGum } from "./components/materials/superDotsGum.js";
 // import { checkerPatternGreen } from "./components/materials/checkerPatternGreen.js";
+import { scaleTest } from "./components/materials/scaleTest.js";
 
 const hdrURL = new URL('/assets/copyrighted/hdr/studio_small_08_1k.hdr', import.meta.url);
 
@@ -100,32 +102,42 @@ class World {
 
     // hinge
 
-    const nItems = 7;
-    const hue = Math.random();
-    // const hue = 0.6;
+    const nItems = 14;
+    // const hue = Math.random();
+    const hue = 0.6;
 
     for (let i = 0; i < nItems; i++) {
       const hcp = {x: Math.random() * spreadWidth - spreadWidth/2, y: 3, z: Math.random() * spreadWidth - spreadWidth/2};
       const hc = hingeComposition(hcp, hue, this.scene, this.loop, this.physics, envmap);
     }
 
+    // plane
+
+    const planeMaterial = scaleTest(0xfffceb, envmap, 0.84);
+    const planeGeom = new PlaneGeometry(2, 2, 4, 4);
+    const plane = new Mesh( planeGeom, planeMaterial );
+    plane.rotation.y = TMath.degToRad(45);
+    plane.position.x = 0;
+    plane.position.y = 2;
+    this.scene.add(plane);
+
     // spheres
 
-    const colorMaterial = defaultColorShinyPlastic(
-      createColor(0.6, 0.8, 0.04),
-      envmap
-    );
+    // const colorMaterial = defaultColorShinyPlastic(
+    //   createColor(0.6, 0.8, 0.03),
+    //   envmap
+    // );
 
-    for (let i = 0; i < 8; i++) {
-      const sphereItem = sphere(colorMaterial, Math.random()/6 + 0.06);
-      sphereItem.castShadow = true;
-      sphereItem.position.x = Math.random() * spreadWidth - spreadWidth/2;
-      sphereItem.position.y = Math.random() + 2;
-      sphereItem.position.z = Math.random() * spreadWidth - spreadWidth/2;
-      this.scene.add(sphereItem); 
-      this.physics.add.existing(sphereItem);
-      sphereItem.body.setBounciness(1);
-    }
+    // for (let i = 0; i < 8; i++) {
+    //   const sphereItem = sphere(colorMaterial, Math.random()/6 + 0.06);
+    //   sphereItem.castShadow = true;
+    //   sphereItem.position.x = Math.random() * spreadWidth - spreadWidth/2;
+    //   sphereItem.position.y = Math.random() + 2;
+    //   sphereItem.position.z = Math.random() * spreadWidth - spreadWidth/2;
+    //   this.scene.add(sphereItem); 
+    //   this.physics.add.existing(sphereItem);
+    //   sphereItem.body.setBounciness(1);
+    // }
 
     // white cubes
 
